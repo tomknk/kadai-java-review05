@@ -26,17 +26,17 @@ public class Review05 {
                     "Kanako1336@"
                 );
             // 4. DBとやりとりする窓口（Statementオブジェクト）の作成
-             String sql = "SELECT * FROM person WHERE ID = ?";    // ← 修正
-             pstmt = con.prepareStatement(sql);  // ← 修正
+             String selectsql = "SELECT * FROM person WHERE ID = ?";
+             pstmt = con.prepareStatement(selectsql);
 
             // 5, 6. Select文の実行と結果を格納／代入
-             System.out.print("検索キーワードを入力してください > ");    // ← 追記
-             String input = keyIn();    // ← 追記
+             System.out.print("検索キーワードを入力してください > ");
+             String input = keyIn();
 
-             // PreparedStatementオブジェクトの?に値をセット  // ← 追記
-             pstmt.setString(1, input);  // ← 追記
+             // PreparedStatementオブジェクトの?に値をセット
+             pstmt.setString(1, input);
 
-             rs = pstmt.executeQuery();  // ← 修正
+             rs = pstmt.executeQuery();
 
             // 7. 結果を表示する
              while( rs.next() ){
@@ -69,7 +69,7 @@ public class Review05 {
             try {
                 pstmt.close();
          } catch (SQLException e) {
-                System.err.println("Statementを閉じるときにエラーが発生しました。");
+                System.err.println("PreparedStatementを閉じるときにエラーが発生しました。");
                 e.printStackTrace();
             }
         }
@@ -85,7 +85,7 @@ public class Review05 {
   }
 
 /*
- * キーボードから入力された値をStringで返す 引数：なし 戻り値：入力された文字列    // ← 追記
+ * キーボードから入力された値をStringで返す 引数：なし 戻り値：入力された文字列
  */
 private static String keyIn() {
     String line = null;
@@ -96,6 +96,18 @@ private static String keyIn() {
 
     }
     return line;
+}
+/*
+ * キーボードから入力された値をintで返す 引数：なし 戻り値：int
+ */
+int num1 = keyInNum();
+private static int keyInNum() {
+    int result = 0;
+    try {
+        result = Integer.parseInt(keyIn());
+    } catch (NumberFormatException e) {
+    }
+    return result;
 }
 
 }
