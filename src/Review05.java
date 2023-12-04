@@ -33,7 +33,7 @@ public class Review05 {
              System.out.print("検索キーワードを入力してください > ");
              int num1 = keyInNum();
 
-             // PreparedStatementオブジェクトの?に値をセット
+             // PreparedStatement　setIntメソッドで値をセット
              pstmt.setInt(1, num1);
              rs = pstmt.executeQuery();
 
