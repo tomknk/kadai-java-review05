@@ -31,11 +31,10 @@ public class Review05 {
 
             // 5, 6. Select文の実行と結果を格納／代入
              System.out.print("検索キーワードを入力してください > ");
-             String input = keyIn();
+             int num1 = keyInNum();
 
              // PreparedStatementオブジェクトの?に値をセット
-             pstmt.setString(1, input);
-
+             pstmt.setInt(1, num1);
              rs = pstmt.executeQuery();
 
             // 7. 結果を表示する
@@ -100,7 +99,7 @@ private static String keyIn() {
 /*
  * キーボードから入力された値をintで返す 引数：なし 戻り値：int
  */
-int num1 = keyInNum();
+
 private static int keyInNum() {
     int result = 0;
     try {
